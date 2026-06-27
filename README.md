@@ -1,7 +1,7 @@
 # BetterSnap - Make Snapchat Web Better
 
 <p align="center">
-  <img src="icons/logo128.png" alt="BetterSnap Logo" width="96" height="96">
+  <img width="800" height="500" alt="bettersnap_124635_full" src="https://github.com/user-attachments/assets/ae7c6697-c43d-4b7d-b869-1bb06e3168cf" />
   <br>
   <strong>BetterSnap v2.0.0</strong><br>
   Screenshot, View Unread Chats, Send as Mobile, and more!<br>
@@ -9,7 +9,6 @@
 </p>
 
 ---
-<img width="800" height="500" alt="bettersnap_124635_full" src="https://github.com/user-attachments/assets/ae7c6697-c43d-4b7d-b869-1bb06e3168cf" />
 
 ## 📖 About
 
