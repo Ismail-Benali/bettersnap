@@ -9,6 +9,7 @@
 </p>
 
 ---
+<img width="800" height="500" alt="bettersnap_124635_full" src="https://github.com/user-attachments/assets/ae7c6697-c43d-4b7d-b869-1bb06e3168cf" />
 
 ## 📖 About
 
