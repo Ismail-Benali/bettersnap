@@ -58,6 +58,8 @@
   const languageNames = { en: "English", ar: "العربية", fr: "Français", ru: "Русский", zh: "中文" };
   let selectedLanguage = localStorage.getItem("bettersnap-language") || "en";
   const getRoot = () => document.getElementById("better-snap-app");
+  const currentVersion = "2.0.1";
+  const releaseUrl = "https://github.com/Ismail-Benali/bettersnap/releases/latest";
 
   function translateText(text) {
     return (translations[selectedLanguage] && translations[selectedLanguage][text]) || text;
@@ -112,6 +114,39 @@
     applyTranslations();
   }
 
+  function isNewerVersion(version) {
+    const current = currentVersion.split(".").map(Number);
+    const latest = String(version).replace(/^v/, "").split(".").map(Number);
+    for (let index = 0; index < 3; index += 1) {
+      if ((latest[index] || 0) !== (current[index] || 0)) return (latest[index] || 0) > (current[index] || 0);
+    }
+    return false;
+  }
+
+  function showUpdateNotice(version) {
+    const root = getRoot();
+    if (!root || root.querySelector("[data-bettersnap-update]") || !isNewerVersion(version)) return;
+    const notice = document.createElement("div");
+    notice.dataset.bettersnapUpdate = "true";
+    notice.style.cssText = "margin:8px 0;padding:7px 10px;border:1px solid #228be6;border-radius:4px;font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;";
+    notice.textContent = `BetterSnap ${version} is available.`;
+    const link = document.createElement("a");
+    link.href = releaseUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Update";
+    link.style.cssText = "color:#228be6;white-space:nowrap;";
+    notice.appendChild(link);
+    root.prepend(notice);
+  }
+
+  function checkForUpdates() {
+    fetch("https://raw.githubusercontent.com/Ismail-Benali/bettersnap/main/manifest.json", { cache: "no-store" })
+      .then((response) => response.ok ? response.json() : null)
+      .then((manifest) => manifest && showUpdateNotice(manifest.version))
+      .catch(() => {});
+  }
+
   const observer = new MutationObserver(refresh);
   const pageObserver = new MutationObserver(() => {
     const currentRoot = getRoot();
@@ -119,6 +154,7 @@
     pageObserver.disconnect();
     observer.observe(currentRoot, { childList: true, subtree: true });
     refresh();
+    checkForUpdates();
   });
   const start = () => {
     const currentRoot = getRoot();
@@ -128,6 +164,7 @@
     }
     observer.observe(currentRoot, { childList: true, subtree: true });
     refresh();
+    checkForUpdates();
   };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
   else start();

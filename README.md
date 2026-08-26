@@ -20,6 +20,7 @@
 - Improved startup compatibility with newer Snapchat Web versions.
 - Fixed the settings menu initialization so the settings icon and panel load correctly.
 - Removed the invalid bootstrap call that caused repeated module initialization errors.
+- Added a safe update check with a link to the latest GitHub Release.
 
 ## ✨ Features
 
@@ -83,6 +84,8 @@ BetterSnap uses **Manifest V3**, ensuring compatibility with all modern browsers
 For Tampermonkey, use only the standalone [bettersnap.user.js](bettersnap.user.js) file, or install it directly from [Greasy Fork](https://greasyfork.org/en/scripts/592574-bettersnap-standalone?locale_override=1).
 
 After installation, open [web.snapchat.com](https://web.snapchat.com) and refresh the page.
+
+When a new version is available, BetterSnap shows an update notice with a direct link to the latest release. Browser-installed versions can update through the browser; for Tampermonkey, open the link and confirm the script update without removing the existing script.
 
 ## ⚙️ Usage
 

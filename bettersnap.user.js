@@ -85,7 +85,7 @@
     }
 
     function loadMainScriptViaBlob() {
-        if (document.getElementById('bettersnap-blob-script')) return;
+        if (document.getElementById('bettersnap-blob-script') || document.getElementById('better-snap-app')) return;
         
         GM_xmlhttpRequest({
             method: "GET",
@@ -105,12 +105,30 @@
                     mainScript.onerror = (e) => console.error("[BetterSnap] Failed to execute Blob script.", e);
                     
                     document.documentElement.appendChild(mainScript);
+                    loadLocalizationScript();
                 } else {
                     console.error("[BetterSnap] Failed to fetch script. Status:", response.status);
                 }
             },
             onerror: function(err) {
                 console.error("[BetterSnap] Network error fetching script:", err);
+            }
+        });
+    }
+
+    function loadLocalizationScript() {
+        if (document.getElementById('bettersnap-localization-script')) return;
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: "https://raw.githubusercontent.com/Ismail-Benali/bettersnap/main/build/localization.js",
+            onload: function(response) {
+                if (response.status !== 200) return;
+                const blobUrl = URL.createObjectURL(new Blob([response.responseText], { type: 'application/javascript' }));
+                const localizationScript = document.createElement('script');
+                localizationScript.id = 'bettersnap-localization-script';
+                localizationScript.src = blobUrl;
+                localizationScript.onload = () => setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+                document.documentElement.appendChild(localizationScript);
             }
         });
     }
