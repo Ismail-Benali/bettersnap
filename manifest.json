@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "BetterSnap - Make Snapchat Web Better",
   "description": "Screenshot & View Unread Chats, Send as Mobile, and more! Works on Chrome, Firefox, Edge, and all modern browsers.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "icons": {
     "16": "icons/logo16.png",
     "32": "icons/logo32.png",
@@ -29,7 +29,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "build/script.js"
+        "build/script.js",
+        "build/localization.js"
       ],
       "matches": [
         "https://web.snapchat.com/*",

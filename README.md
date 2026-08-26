@@ -1,7 +1,7 @@
 <p align="center">
   <img width="800" height="500" alt="bettersnap_124635_full" src="https://github.com/user-attachments/assets/ae7c6697-c43d-4b7d-b869-1bb06e3168cf" />
   <br>
-  <strong>BetterSnap v2.0.0</strong><br>
+  <strong>BetterSnap v2.0.1</strong><br>
   Screenshot, View Unread Chats, Send as Mobile, and more!<br>
   Compatible with <strong>all modern browsers</strong>.
 </p>
@@ -11,6 +11,15 @@
 ## 📖 About
 
 **BetterSnap** is a powerful browser extension that enhances your Snapchat Web experience with exclusive features not available in the original web version. Take full control over your privacy, presence, and messaging capabilities.
+
+## 🆕 What's New in v2.0.1
+
+- Added interface language selection for English, Arabic, French, Russian, and Chinese.
+- Added automatic language preference saving between browser sessions.
+- Added translations for settings names, descriptions, search, reset, and Discord controls.
+- Improved startup compatibility with newer Snapchat Web versions.
+- Fixed the settings menu initialization so the settings icon and panel load correctly.
+- Removed the invalid bootstrap call that caused repeated module initialization errors.
 
 ## ✨ Features
 
@@ -47,7 +56,7 @@ BetterSnap uses **Manifest V3**, ensuring compatibility with all modern browsers
 
 ### Chrome / Edge / Brave / Opera
 
-1. Download the `BetterSnap-Universal-v2.0.0.zip` file
+1. Download the `BetterSnap-Universal-v2.0.1.zip` file
 2. Extract the ZIP file to a folder on your computer
 3. Open your browser and go to the extensions page:
    - **Chrome:** `chrome://extensions`
@@ -61,13 +70,19 @@ BetterSnap uses **Manifest V3**, ensuring compatibility with all modern browsers
 
 ### Firefox
 
-1. Download the `BetterSnap-Universal-v2.0.0.zip` file
+1. Download the `BetterSnap-Universal-v2.0.1.zip` file
 2. Open Firefox and go to `about:addons`
 3. Click the gear icon ⚙️ in the top-right corner
 4. Select **"Install Add-on From File"**
 5. Choose the downloaded ZIP file
 6. Confirm the installation
 7. Navigate to [web.snapchat.com](https://web.snapchat.com) — you're all set!
+
+### Tampermonkey
+
+For Tampermonkey, use only the standalone [bettersnap.user.js](bettersnap.user.js) file, or install it directly from [Greasy Fork](https://greasyfork.org/en/scripts/592574-bettersnap-standalone?locale_override=1).
+
+After installation, open [web.snapchat.com](https://web.snapchat.com) and refresh the page.
 
 ## ⚙️ Usage
 
@@ -88,6 +103,7 @@ bettersnap-extension/
 │   └── logo128.png        # 128x128 icon
 └── build/
     ├── inject.js          # Content script loader
+  ├── localization.js    # Interface translations and language selection
     ├── script.js          # Main extension logic
     └── script.css         # UI styles
 ```
